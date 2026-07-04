@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canon R10 + Sigma 18-50mm f/2.8 — Field Guide</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+  :root {
+    --black: #0D0D0D;
+    --off-white: #F5F3EE;
+    --warm-mid: #E8E3DA;
+    --gold: #C8922A;
+    --gold-light: #F2C96A;
+    --red: #C0392B;
+    --teal: #1A7A72;
+    --blue: #1A4B7A;
+    --ink: #1C1C1C;
+    --muted: #6B6560;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--black);
+    color: var(--off-white);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    background: var(--black);
+    padding: 48px 32px 40px;
+    border-bottom: 2px solid var(--gold);
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,146,42,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cover-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .cover h1 {
+    font-size: clamp(26px, 6vw, 42px);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .cover h1 span { color: var(--gold); }
+  .cover-sub {
+    color: var(--muted);
+    font-size: 13px;
+    max-width: 480px;
+  }
+  .cover-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  .tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    border: 1px solid;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+  .tag-gold { border-color: var(--gold); color: var(--gold); }
+  .tag-teal { border-color: var(--teal); color: var(--teal); }
+  .tag-red  { border-color: var(--red);  color: var(--red);  }
+  .tag-blue { border-color: var(--blue); color: #5B9BD5; }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 32px 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .section h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  /* ── EXPOSURE TRIANGLE ── */
+  .triangle-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .tri-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px;
+    padding: 16px 12px;
+    text-align: center;
+  }
+  .tri-card .icon {
+    font-size: 22px;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .tri-card h3 {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .tri-card p { font-size: 11px; color: var(--muted); line-height: 1.4; }
+  .tri-card .values {
+    margin-top: 10px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--gold-light);
+  }
+
+  /* ── SCENE CARDS ── */
+  .scene-card {
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 14px;
+    position: relative;
+    overflow: hidden;
+  }
+  .scene-outdoor { background: linear-gradient(135deg, #0a2a1a 0%, #0d3d28 100%); border-left: 3px solid var(--teal); }
+  .scene-indoor  { background: linear-gradient(135deg, #1a1a2e 0%, #162040 100%); border-left: 3px solid #5B9BD5; }
+  .scene-lowlight{ background: linear-gradient(135deg, #1a0a0a 0%, #2a1010 100%); border-left: 3px solid var(--red); }
+
+  .scene-card h3 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .scene-card h3 .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .dot-teal { background: var(--teal); }
+  .dot-blue { background: #5B9BD5; }
+  .dot-red  { background: var(--red); }
+
+  .settings-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .setting-pill {
+    background: rgba(0,0,0,0.3);
+    border-radius: 4px;
+    padding: 8px 10px;
+    text-align: center;
+  }
+  .setting-pill .label {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 3px;
+  }
+  .setting-pill .value {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gold-light);
+  }
+  .scene-tips {
+    font-size: 11px;
+    color: rgba(255,255,255,0.65);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 10px;
+    margin-top: 4px;
+  }
+  .scene-tips strong { color: var(--off-white); }
+
+  /* ── ISO TABLE ── */
+  .iso-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-top: 8px;
+  }
+  .iso-table th {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: left;
+    padding: 8px 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .iso-table td {
+    padding: 10px 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    vertical-align: top;
+  }
+  .iso-table td:first-child {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    color: var(--gold-light);
+    white-space: nowrap;
+  }
+  .iso-bar {
+    height: 4px;
+    border-radius: 2px;
+    margin-top: 4px;
+    background: var(--gold);
+  }
+
+  /* ── APERTURE CHART ── */
+  .aperture-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .aperture-value {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gold-light);
+    width: 52px;
+    flex-shrink: 0;
+  }
+  .aperture-visual {
+    flex-shrink: 0;
+  }
+  .aperture-circle {
+    border-radius: 50%;
+    background: rgba(200,146,42,0.25);
+    border: 2px solid var(--gold);
+  }
+  .aperture-desc {
+    font-size: 11px;
+    color: var(--off-white);
+  }
+  .aperture-desc span {
+    display: block;
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 1px;
+  }
+
+  /* ── QUICK FIXES ── */
+  .fix-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .fix-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 6px;
+    padding: 14px;
+  }
+  .fix-problem {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--red);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .fix-solution {
+    font-size: 11px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.5;
+  }
+  .fix-solution code {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    background: rgba(200,146,42,0.15);
+    color: var(--gold-light);
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+
+  /* ── EXERCISES ── */
+  .exercise {
+    background: rgba(255,255,255,0.03);
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.07);
+    padding: 18px;
+    margin-bottom: 12px;
+  }
+  .exercise-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 10px;
+  }
+  .exercise-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .exercise h3 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 3px;
+  }
+  .exercise-level {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .level-beginner { color: var(--teal); }
+  .level-mid      { color: var(--gold); }
+  .level-pressure { color: var(--red); }
+
+  .exercise-body {
+    font-size: 12px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .exercise-goal {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--gold-light);
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding-top: 8px;
+    margin-top: 4px;
+  }
+
+  /* ── MODES REFERENCE ── */
+  .modes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .mode-card {
+    background: rgba(255,255,255,0.04);
+    border-radius: 6px;
+    padding: 14px;
+    border: 1px solid rgba(255,255,255,0.07);
+  }
+  .mode-dial {
+    font-family: 'Space Mono', monospace;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .mode-card h3 {
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .mode-card p {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+  .mode-card .use-when {
+    font-size: 10px;
+    color: var(--gold-light);
+    margin-top: 6px;
+    font-style: italic;
+  }
+
+  /* ── PRESSURE PROTOCOL ── */
+  .protocol-step {
+    display: flex;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    align-items: flex-start;
+  }
+  .protocol-step:last-child { border-bottom: none; }
+  .step-num {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: var(--black);
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .step-content h4 {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .step-content p {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .step-content code {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    background: rgba(200,146,42,0.15);
+    color: var(--gold-light);
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    padding: 28px 24px;
+    text-align: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+  .footer strong { color: var(--gold); }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 4px 0;
+    opacity: 0.4;
+  }
+
+  .highlight-box {
+    background: rgba(200,146,42,0.1);
+    border: 1px solid rgba(200,146,42,0.3);
+    border-radius: 6px;
+    padding: 14px;
+    margin-top: 14px;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--off-white);
+  }
+  .highlight-box strong { color: var(--gold-light); }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-eyebrow">LaVidaRicia · Field Guide v1.0</div>
+  <h1>Canon R10 + Sigma 18-50mm<br><span>Master Your Light</span></h1>
+  <p class="cover-sub">Settings cheat sheets, aperture & ISO references, and skill-building exercises to get you off Auto — for good.</p>
+  <div class="cover-tags">
+    <span class="tag tag-teal">Outdoor</span>
+    <span class="tag tag-blue">Indoor</span>
+    <span class="tag tag-red">Low Light</span>
+    <span class="tag tag-gold">Portraits</span>
+  </div>
+</div>
+
+<!-- EXPOSURE TRIANGLE -->
+<div class="section">
+  <div class="section-label">The Foundation</div>
+  <h2>The Exposure Triangle</h2>
+  <p style="font-size:12px;color:var(--muted);margin-bottom:16px;">Every photo is controlled by three things working together. Master these and you'll never be stuck on Auto again.</p>
+
+  <div class="triangle-grid">
+    <div class="tri-card">
+      <span class="icon">🔆</span>
+      <h3>ISO</h3>
+      <p>How sensitive the sensor is to light. Higher = brighter but grainier.</p>
+      <div class="values">100 → 6400+</div>
+    </div>
+    <div class="tri-card">
+      <span class="icon">◎</span>
+      <h3>Aperture</h3>
+      <p>Size of the lens opening. Lower f/ = more light + more blur.</p>
+      <div class="values">f/1.8 → f/16</div>
+    </div>
+    <div class="tri-card">
+      <span class="icon">⏱</span>
+      <h3>Shutter</h3>
+      <p>How long the sensor is exposed. Faster = freezes motion.</p>
+      <div class="values">1/30 → 1/2000</div>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <strong>The golden rule:</strong> When one goes up, something else must compensate. Got darker? Raise ISO or open aperture wider. Got blurry motion? Increase shutter speed then raise ISO to compensate. They're always in conversation.
+  </div>
+</div>
+
+<!-- CAMERA MODES -->
+<div class="section">
+  <div class="section-label">Dial Reference</div>
+  <h2>Which Mode to Use When</h2>
+  <div class="modes-grid">
+    <div class="mode-card">
+      <div class="mode-dial">Av</div>
+      <h3>Aperture Priority</h3>
+      <p>You control the aperture (blur). Camera handles shutter speed.</p>
+      <p class="use-when">→ Your default mode for 90% of shooting</p>
+    </div>
+    <div class="mode-card">
+      <div class="mode-dial">Tv</div>
+      <h3>Shutter Priority</h3>
+      <p>You control shutter speed. Camera handles aperture.</p>
+      <p class="use-when">→ Moving subjects, dancing, kids running</p>
+    </div>
+    <div class="mode-card">
+      <div class="mode-dial">M</div>
+      <h3>Manual</h3>
+      <p>You control everything. Full creative control.</p>
+      <p class="use-when">→ Studio, controlled light, or when you're ready</p>
+    </div>
+    <div class="mode-card">
+      <div class="mode-dial">P</div>
+      <h3>Program Auto</h3>
+      <p>Camera picks both, but you can still shift the combo.</p>
+      <p class="use-when">→ Fast moving situations, backup mode</p>
+    </div>
+  </div>
+  <div class="highlight-box" style="margin-top:12px;">
+    <strong>Start here:</strong> Put the dial on <strong>Av</strong>. Set your aperture, and let the camera handle shutter. This alone gives you creative control over blur and light while removing the biggest variable. This is how most photographers shoot day-to-day.
+  </div>
+</div>
+
+<!-- SCENE CHEAT SHEETS -->
+<div class="section">
+  <div class="section-label">Scene Cheat Sheets</div>
+  <h2>Settings by Scene</h2>
+
+  <!-- OUTDOOR -->
+  <div class="scene-card scene-outdoor">
+    <h3><span class="dot dot-teal"></span>☀️ Outdoor — Bright / Golden Hour</h3>
+    <div class="settings-row">
+      <div class="setting-pill">
+        <div class="label">ISO</div>
+        <div class="value">100–400</div>
+      </div>
+      <div class="setting-pill">
+        <div class="label">Aperture</div>
+        <div class="value">f/2.8–f/5.6</div>
+      </div>
+      <div class="setting-pill">
+        <div class="label">Shutter</div>
+        <div class="value">1/500–1/2000</div>
+      </div>
+    </div>
+    <div class="settings-row">
+      <div class="setting-pill">
+        <div class="label">White Bal</div>
+        <div class="value">Daylight</div>
+      </div>
+      <div class="setting-pill">
+        <div class="label">AF Mode</div>
+        <div class="value">Face+Track</div>
+      </div>
+      <div class="setting-pill">
+        <div class="label">Metering</div>
+        <div class="value">Evaluative</div>
+      </div>
+    </div>
+    <div class="scene-tips">
+      <strong>Portrait tip:</strong> Open aperture to f/2.8 for background blur. Stand with subject's back to sun (backlit) for a soft glow, or find open shade for even skin tones. Avoid harsh midday direct sun — it creates unflattering shadows under eyes. · <strong>Bright override:</strong> If image is too bright, press the Exposure Compensation button (the ± button) and dial to -1/3 or -2/3.
+    </div>
+  </div>
+
+  <!-- OUTDOOR OVERCAST -->
+  <div class="scene-card scene-outdoor" style="background: linear-gradient(135deg, #151f25 0%, #1c2d35 100%);">
+    <h3><span class="dot dot-teal"></span>🌥 Outdoor — Overcast / Cloudy</h3>
+    <div class="settings-row">
+      <div class="setting-pill">
+        <div class="label">ISO</div>
+        <div class="value">200–800</div>
+      </div>
+      <div class="setting-pill">
+        <div class="label">Aperture</div>
+        <div class="value">f/2.8–f/4</div>
+      </div>
+      <div class="setting-pill">
+        <div class="label">Shutter</div>
+        <div class="value">1/200–1/800</div>
+      </div>
+    </div>
+    <div class="settings-row">
+      <div class="setting-pill">
+        <div class="label">White Bal</div>
+        <div class="value">Cloudy</div>
+      </div>
+      <div class="setting-pill">
+        <div class="label">AF Mode</div>
+        <div class="value">Face+Track</div>
+      </div>
+      <div class="setting-pill">
+        <div class="label">Metering</div>
+        <div class="value">Evaluative</div>
+      </div>
+    </div>
+    <div class="scene-tips">
+      <strong>Hidden gem:</strong> Overcast skies are a giant softbox — this is actually the best natural light for portraits. Skin looks smooth and shadows are soft. Open your aperture wide (f/2.8) and shoot freely. Set White Balance to "Cloudy" to warm up the cool, grey light.
+    </div>
+  </div>
+
+  <!-- INDOOR -->
+  <div class="scene-card scene-indoor">
+    <h3><span class="dot dot-blue"></span>🏠 Indoor — Window Light / Daytime</h3>
+    <div class="settings-row">
+      <div class="setting-pill">
+        <div class="label">ISO</div>
+        <div class="value">400–1600</div>
+      </div>
+      <div class="setting-pill">
+        <div class="label">Aperture</div>
+        <div class="value">f/2.8</div>
+      </div>
+      <div class="setting-pill">
+        <div class="label">Shutter</div>
+        <div class="value">1/100–1/320</div>
+      </div>
+    </div>
+    <div class="settings-row">
+      <div class="setting-pill">
+        <div class="label">White Bal</div>
+        <div class="value">Auto / Cloudy</div>
+      </div>
+      <div class="setting-pill">
+        <div class="label">AF Mode</div>
+        <div class="value">Face+Track</div>
+      </div>
+      <div class="setting-pill">
+        <div class="label">Metering</div>
+        <div class="value">Spot / Eval</div>
+      </div>
+    </div>
+    <div class="scene-tips">
+      <strong>Window light trick:</strong> Position your subject facing the window (not beside it). The light becomes your "studio light." Stand between subject and window — you'll get catch lights in their eyes. If background is too bright vs. face, use Spot Metering on their face and Exposure Comp +1/3.
+    </div>
+  </div>
+
+  <!-- INDOOR ARTIFICIAL -->
+  <div class="scene-card scene-indoor" style="background: linear-gradient(135deg, #12101e 0%, #1a1530 100%);">
+    <h3><span class="dot dot-blue"></span>💡 Indoor — Artificial / Mixed Light</h3>
+    <div class="settings-row">
+      <div class="setting-pill">
+        <div class="label">ISO</div>
+        <div class="value">800–3200</div>
+      </div>
+      <div class="setting-pill">
+        <div class="label">Aperture</div>
+        <div class="value">f/2.8</div>
+      </div>
+      <div class="setting-pill">
+        <div class="label">Shutter</div>
+        <div class="value">1/60–1/160</div>
+      </div>
+    </div>
+    <div class="settings-row">
+      <div class="setting-pill">
+        <div class="label">White Bal</div>
+        <div class="value">Tungsten/Auto</div>
+      </div>
+      <div class="setting-pill">
+        <div class="label">AF Mode</div>
+        <div class="value">Face+Track</div>
+      </div>
+      <div class="setting-pill">
+        <div class="label">Metering</div>
+        <div class="value">Spot</div>
+      </div>
+    </div>
+    <div class="scene-tips">
+      <strong>The fix for "yellow" photos:</strong> Set White Balance to "Tungsten" (the lightbulb icon) to neutralize warm artificial light. Still off? Use "Auto WB" — on the R10 it's excellent. Shutter speed must stay at <strong>1/60 minimum</strong> indoors or you'll get motion blur even standing still.
+    </div>
+  </div>
+
+  <!-- LOW LIGHT -->
+  <div class="scene-card scene-lowlight">
+    <h3><span class="dot dot-red"></span>🌙 Low Light — Evening / Dimly Lit Spaces</h3>
+    <div class="settings-row">
+      <div class="setting-pill">
+        <div class="label">ISO</div>
+        <div class="value">1600–6400</div>
+      </div>
+      <div class="setting-pill">
+        <div class="label">Aperture</div>
+        <div class="value">f/2.8</div>
+      </div>
+      <div class="setting-pill">
+        <div class="label">Shutter</div>
+        <div class="value">1/60–1/125</div>
+      </div>
+    </div>
+    <div class="settings-row">
+      <div class="setting-pill">
+        <div class="label">White Bal</div>
+        <div class="value">Auto</div>
+      </div>
+      <div class="setting-pill">
+        <div class="label">AF Assist</div>
+        <div class="value">On</div>
+      </div>
+      <div class="setting-pill">
+        <div class="label">IS Mode</div>
+        <div class="value">On (Mode 1)</div>
+      </div>
+    </div>
+    <div class="scene-tips">
+      <strong>Low light survival kit:</strong> Always shoot at f/2.8 max (your Sigma's superpower). Keep shutter at 1/60 minimum. Then raise ISO until it's bright enough — the R10 handles up to ISO 3200 cleanly. Beyond that, some grain is okay, it's better than a blurry photo. <strong>Never go below 1/60 handheld without IS.</strong> · Enable the AF assist beam in menu so the camera can find focus in the dark.
+    </div>
+  </div>
+</div>
+
+<!-- ISO REFERENCE -->
+<div class="section">
+  <div class="section-label">ISO Reference Guide</div>
+  <h2>ISO — When to Use What</h2>
+
+  <table class="iso-table">
+    <thead>
+      <tr>
+        <th>ISO Value</th>
+        <th>Scene</th>
+        <th>Grain Level</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>100–200</td>
+        <td>Bright sun, beach, midday outdoors. The cleanest, sharpest quality you'll get.</td>
+        <td><div class="iso-bar" style="width:10%; background: var(--teal);"></div><span style="font-size:10px;color:var(--teal);">None</span></td>
+      </tr>
+      <tr>
+        <td>400–800</td>
+        <td>Overcast outdoors, shaded areas, near a bright window indoors.</td>
+        <td><div class="iso-bar" style="width:25%; background: var(--teal);"></div><span style="font-size:10px;color:var(--teal);">Barely visible</span></td>
+      </tr>
+      <tr>
+        <td>1600</td>
+        <td>Indoor with decent light, golden hour outdoors, dimly lit rooms.</td>
+        <td><div class="iso-bar" style="width:45%; background: var(--gold);"></div><span style="font-size:10px;color:var(--gold);">Slight — acceptable</span></td>
+      </tr>
+      <tr>
+        <td>3200</td>
+        <td>Low light indoors, restaurants, events with stage lighting.</td>
+        <td><div class="iso-bar" style="width:65%; background: var(--gold);"></div><span style="font-size:10px;color:var(--gold);">Visible — still good</span></td>
+      </tr>
+      <tr>
+        <td>6400</td>
+        <td>Very dark scenes, nighttime outdoors, candlelit rooms. Last resort.</td>
+        <td><div class="iso-bar" style="width:85%; background: var(--red);"></div><span style="font-size:10px;color:var(--red);">Noticeable grain</span></td>
+      </tr>
+      <tr>
+        <td>12800+</td>
+        <td>Pitch black emergency. Use only when a grainy photo beats no photo.</td>
+        <td><div class="iso-bar" style="width:100%; background: var(--red);"></div><span style="font-size:10px;color:var(--red);">Heavy grain</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="highlight-box" style="margin-top:14px;">
+    <strong>R10 + Sigma f/2.8 tip:</strong> Because your Sigma lens opens to f/2.8 (which lets in double the light of a kit f/4 lens), you can often shoot at ISO 800 where others need ISO 3200. That's your biggest advantage over basic kit shooters. Use it.
+  </div>
+</div>
+
+<!-- APERTURE / F-STOP CHART -->
+<div class="section">
+  <div class="section-label">F-Stop Visual Guide</div>
+  <h2>Aperture — Blur & Light Reference</h2>
+  <p style="font-size:11px;color:var(--muted);margin-bottom:16px;">Lower f-number = larger opening = more light + more background blur (bokeh)</p>
+
+  <div class="aperture-row">
+    <div class="aperture-value">f/1.8</div>
+    <div class="aperture-visual"><div class="aperture-circle" style="width:40px;height:40px;opacity:1;"></div></div>
+    <div class="aperture-desc">Maximum blur, max light. Portrait magic.
+      <span>Subject sharp, background melted. Use for portraits, close-ups, low light. (RF 50mm lens)</span>
+    </div>
+  </div>
+  <div class="aperture-row">
+    <div class="aperture-value">f/2.8</div>
+    <div class="aperture-visual"><div class="aperture-circle" style="width:34px;height:34px;opacity:0.9;"></div></div>
+    <div class="aperture-desc">Beautiful blur, lots of light. Your Sigma's sweet spot.
+      <span>Your everyday go-to. Works for portraits, events, indoor + outdoor. Use this constantly.</span>
+    </div>
+  </div>
+  <div class="aperture-row">
+    <div class="aperture-value">f/4</div>
+    <div class="aperture-visual"><div class="aperture-circle" style="width:28px;height:28px;opacity:0.8;"></div></div>
+    <div class="aperture-desc">Soft blur, good light. Group photos start here.
+      <span>More of the scene in focus. Use for 2–3 person shots where you want everyone sharp.</span>
+    </div>
+  </div>
+  <div class="aperture-row">
+    <div class="aperture-value">f/5.6</div>
+    <div class="aperture-visual"><div class="aperture-circle" style="width:22px;height:22px;opacity:0.7;"></div></div>
+    <div class="aperture-desc">Light blur. Groups, environmental portraits.
+      <span>Subject and some background in focus. Good for "lifestyle" shots with location context.</span>
+    </div>
+  </div>
+  <div class="aperture-row">
+    <div class="aperture-value">f/8</div>
+    <div class="aperture-visual"><div class="aperture-circle" style="width:16px;height:16px;opacity:0.55;"></div></div>
+    <div class="aperture-desc">Everything sharp. Bright daylight landscapes.
+      <span>Max sharpness across the whole frame. Needs plenty of light — don't use indoors.</span>
+    </div>
+  </div>
+  <div class="aperture-row">
+    <div class="aperture-value">f/11–16</div>
+    <div class="aperture-visual"><div class="aperture-circle" style="width:10px;height:10px;opacity:0.4;"></div></div>
+    <div class="aperture-desc">Max depth, very little light.
+      <span>Specialty use: architecture, full-scene landscape, tripod required. Needs bright sun.</span>
+    </div>
+  </div>
+</div>
+
+<!-- QUICK FIX GUIDE -->
+<div class="section">
+  <div class="section-label">Problem Solving</div>
+  <h2>Photo Came Out Wrong? Fix It Fast.</h2>
+  <div class="fix-grid">
+    <div class="fix-card">
+      <div class="fix-problem">🌑 Too Dark</div>
+      <div class="fix-solution">
+        Press <code>±</code> button → dial to <code>+1 EV</code><br>
+        Or: raise ISO one stop<br>
+        Or: open aperture wider (lower f/ number)<br>
+        Or: slow shutter speed slightly
+      </div>
+    </div>
+    <div class="fix-card">
+      <div class="fix-problem">☀️ Too Bright / Washed Out</div>
+      <div class="fix-solution">
+        Press <code>±</code> button → dial to <code>-1 EV</code><br>
+        Or: raise shutter speed<br>
+        Or: close aperture (higher f/ number)<br>
+        Or: lower ISO
+      </div>
+    </div>
+    <div class="fix-card">
+      <div class="fix-problem">🌀 Blurry / Motion Blur</div>
+      <div class="fix-solution">
+        Shutter too slow. Increase to <code>1/125</code> minimum for people.<br>
+        For moving subjects: <code>1/500+</code><br>
+        Compensate by raising ISO.
+      </div>
+    </div>
+    <div class="fix-card">
+      <div class="fix-problem">🟡 Weird Color / Yellow Cast</div>
+      <div class="fix-solution">
+        Change White Balance.<br>
+        Indoors: try <code>Tungsten</code> or <code>Fluorescent</code><br>
+        Outdoors: try <code>Daylight</code> or <code>Cloudy</code><br>
+        Or use <code>Auto WB</code> — reliable on R10.
+      </div>
+    </div>
+    <div class="fix-card">
+      <div class="fix-problem">😶 Face Not in Focus</div>
+      <div class="fix-solution">
+        Check AF mode: set to <code>Face+Tracking</code><br>
+        Half-press shutter to lock focus before shooting.<br>
+        Reposition — R10 needs to "see" the face.
+      </div>
+    </div>
+    <div class="fix-card">
+      <div class="fix-problem">🌫 Background Too Sharp</div>
+      <div class="fix-solution">
+        Open aperture wider: <code>f/2.8</code> or lower.<br>
+        Move subject farther from the background.<br>
+        Move yourself closer to the subject.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- UNDER PRESSURE PROTOCOL -->
+<div class="section">
+  <div class="section-label">Under Pressure</div>
+  <h2>The 10-Second Reset Protocol</h2>
+  <p style="font-size:12px;color:var(--muted);margin-bottom:16px;">When you're in a new location and need great shots fast, run through this checklist before you start shooting.</p>
+
+  <div class="protocol-step">
+    <div class="step-num">1</div>
+    <div class="step-content">
+      <h4>Read the light first</h4>
+      <p>Look at where the light is coming from — window, sun, lamp. Is it bright or dark? This determines your starting ISO. Bright outdoors → <code>ISO 100</code>. Dark indoors → start at <code>ISO 1600</code>.</p>
+    </div>
+  </div>
+  <div class="protocol-step">
+    <div class="step-num">2</div>
+    <div class="step-content">
+      <h4>Set your mode to Av</h4>
+      <p>Turn the dial to <code>Av</code>. Set aperture to <code>f/2.8</code> as your starting point for most situations. This gives you control over blur and lets the camera handle shutter.</p>
+    </div>
+  </div>
+  <div class="protocol-step">
+    <div class="step-num">3</div>
+    <div class="step-content">
+      <h4>Take one test shot of your hand</h4>
+      <p>Shoot your hand or a nearby surface. Check the result — is it bright enough? In focus? Adjust ISO up or down until you're happy. This is your calibration shot.</p>
+    </div>
+  </div>
+  <div class="protocol-step">
+    <div class="step-num">4</div>
+    <div class="step-content">
+      <h4>Use Exposure Compensation as your real-time dial</h4>
+      <p>The <code>±</code> button on the back is your fastest correction tool. Subject looks dark? Go to <code>+1</code>. Washed out? Go to <code>-1</code>. This is faster than changing ISO mid-shoot.</p>
+    </div>
+  </div>
+  <div class="protocol-step">
+    <div class="step-num">5</div>
+    <div class="step-content">
+      <h4>Enable Face + Tracking before anything else</h4>
+      <p>Go to AF Method → set to <code>Face+Tracking</code>. Leave it there for every portrait situation. The R10's AI will lock onto eyes and follow the subject. You focus on composing, not chasing focus.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SKILL BUILDING EXERCISES -->
+<div class="section">
+  <div class="section-label">Skill Builder</div>
+  <h2>5 Exercises That Build Real Camera Muscle</h2>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <div class="exercise-num">01</div>
+      <div>
+        <h3>The Aperture Walk</h3>
+        <div class="exercise-level level-beginner">● Beginner · Week 1</div>
+      </div>
+    </div>
+    <div class="exercise-body">
+      Find one subject — a flower, a candle, a friend's face. Shoot it 5 times without moving. Each shot, only change the aperture: f/2.8, f/4, f/5.6, f/8, f/11. Do not change anything else. Then review all 5 on your phone and observe what happens to the background blur and brightness as the number changes. This single exercise teaches you more than any YouTube video.
+    </div>
+    <div class="exercise-goal">🎯 Goal: Visually understand what each f-stop looks like so you can predict the result before you shoot.</div>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <div class="exercise-num">02</div>
+      <div>
+        <h3>The ISO Noise Test</h3>
+        <div class="exercise-level level-beginner">● Beginner · Week 1</div>
+      </div>
+    </div>
+    <div class="exercise-body">
+      Set your camera to Manual mode. Keep aperture at f/2.8 and shutter at 1/100. Take one photo at each ISO: 100, 400, 800, 1600, 3200, 6400. Look at each photo at 100% zoom on your phone or computer. You'll see exactly where the R10 starts to show grain. Once you know this threshold, you'll always know how high you can push before quality suffers.
+    </div>
+    <div class="exercise-goal">🎯 Goal: Know your camera's ISO ceiling so you never under- or over-compensate in the dark.</div>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <div class="exercise-num">03</div>
+      <div>
+        <h3>The Light Relocation Drill</h3>
+        <div class="exercise-level level-mid">◆ Intermediate · Week 2</div>
+      </div>
+    </div>
+    <div class="exercise-body">
+      Use one window in your home. Take a portrait of someone (or yourself with a timer) in 4 different positions relative to the window: facing it directly, 45° side-lit, 90° side-lit (dramatic), and back to the window. Same settings each time — just move the person. Review them side by side. This teaches you that light placement beats expensive gear every single time. The difference between these four shots is dramatic.
+    </div>
+    <div class="exercise-goal">🎯 Goal: Learn to "see" light direction and use it intentionally on any shoot.</div>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <div class="exercise-num">04</div>
+      <div>
+        <h3>The 60-Second Location Recalibration</h3>
+        <div class="exercise-level level-pressure">▲ Pressure Training · Week 3</div>
+      </div>
+    </div>
+    <div class="exercise-body">
+      Go somewhere new — a restaurant, a park, a friend's living room. You have 60 seconds to get one great shot before your "subject" moves. Run the 10-Second Reset Protocol: read the light, set Av mode, set f/2.8, take a calibration test shot, adjust ISO and Exposure Compensation, then shoot for real. Repeat this drill weekly in different environments. This is exactly what it feels like to shoot content on location under time pressure — the same pressure you feel at events. Build the habit until it's instinct.
+    </div>
+    <div class="exercise-goal">🎯 Goal: Get comfortable making fast decisions in unfamiliar light so you stop relying on Auto.</div>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <div class="exercise-num">05</div>
+      <div>
+        <h3>The Re-Shoot</h3>
+        <div class="exercise-level level-pressure">▲ Advanced · Ongoing</div>
+      </div>
+    </div>
+    <div class="exercise-body">
+      Go back through your G7X photos — find the ones that "could have been fire" but came out dark or washed out. Recreate those same shots with your R10 using what you now know. Shoot the same type of scene, same vibe, same framing. Compare old vs. new. This exercise is powerful because you already know exactly what you wanted — now you're learning to execute it technically. You'll feel the difference immediately and it'll lock in your muscle memory.
+    </div>
+    <div class="exercise-goal">🎯 Goal: Turn past frustrations into technical wins and build visual confidence in your own eye.</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  Built for <strong>LaVidaRicia</strong> · Canon R10 + Sigma 18-50mm f/2.8 · 2026<br><br>
+  ISO controls brightness sensitivity · Aperture controls blur + light · Shutter controls motion + light<br>
+  Start every shoot in Av mode · Face+Tracking always on · Exposure Comp is your fastest fix
+</div>
+
+</body>
+</html>
